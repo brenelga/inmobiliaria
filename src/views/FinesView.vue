@@ -5,7 +5,7 @@ export default {
   data() {
     return {
       multas: [],
-      departamentoId: '123' // este valor debe ser dinámico según tu caso
+      departamentoId: '001'
     }
   },
   mounted() {
