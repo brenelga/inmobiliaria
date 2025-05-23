@@ -1,17 +1,24 @@
-<script setup>
-import { api } from '@/utils/index.js';
-</script>
+<script>
+import { api } from '../utils/index.js'
 
-export default (
+export default {
   data() {
     return {
-      multas: []
-      departamentoId: '001'
+      multas: [],
+      departamentoId: '123' // este valor debe ser dinámico según tu caso
     }
   },
-  mounted(){
+  mounted() {
     this.cargarMultas()
     this.interval = setInterval(this.cargarMultas, 5000)
   },
-  before
-)
+  beforeUnmount() {
+    clearInterval(this.interval)
+  },
+  methods: {
+    async cargarMultas() {
+      this.multas = await api(this.departamentoId)
+    }
+  }
+}
+</script>
